@@ -1,0 +1,56 @@
+@font-face{
+    font-family:"Angeme";
+    src:url(fonts/Angeme-Regular.ttf);
+}
+
+@font-face {
+    font-family:"Riffic";
+    src: url(fonts/RifficFree-Bold.ttf);
+}
+
+@font-face {
+    font-family:"Vasek";
+    src: url(fonts/VasekItalic_0.ttf);
+}
+
+@font-face {
+    font-family:"Aubrey";
+    src: url(fonts/AubreyPro.otf);
+}
+
+*{
+    margin:0px;
+    padding:0px;
+    border-radius: 0px;
+}
+
+body{
+    background-image: url(img/En.jpg);
+}
+
+#wrapper{
+    width:100%;
+    height:100%;
+    margin:0px auto;
+    z-index: 1;
+}
+
+#inner{
+position:absolute;
+top: 150px;
+left: 245px;
+width:48%;
+height:650px;
+background:linear-gradient(145deg,#000000, #012402);
+box-shadow: 0 5px 2px #012402;
+box-shadow: inset 0 0 5px 2px #000000;
+border-radius: 30px;
+}
+
+#inner img{
+    width: 100px;
+    height: 75px;
+    position: relative;
+    border-radius: 5px;
+    filter: blur(0.05px);
+}

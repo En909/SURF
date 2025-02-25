@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link href="info.css" rel="stylesheet">
+    <link rel="icon" href="img/fav.ico">
+    <meta charset="UTF-8">
+    <title>Surf info</title>
+    <style>
+        #main {
+          display: none;
+        }
+        #okno {
+          width: 1000px;
+          height: 600px;
+          text-align: center;
+          color: #014710;
+          background-image: url(img/chat.png);
+        }
+        #main:target {display: block;}
+      </style>
+</head>
+<body>
+    <div id = "wrapper">
+        <div id="inner">
+            <p style="position: relative; left: 160px; top:100px;"><a href="#main"><img src="img/host.png"></a></p>
+        </div>
+        <a href="#" id="main" style="position:fixed; top: 150px; left: 245px;">
+            <div id="okno">
+            </div>
+        </a>
+    </div>
+</body>
+</html>
