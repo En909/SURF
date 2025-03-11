@@ -149,7 +149,8 @@ body {
 }
 
 #news img {
-    width: 250px;
+    width: 30%;
+    height: 20%;
     float: left;
     margin: 10px;
     border-radius: 5px;
@@ -188,10 +189,10 @@ body {
 
 @media (max-width: 768px) {
     #menu {
-        width: 30%; 
+        width: 100%; /* Полная ширина для мобильных устройств */
         height: auto; 
         position: relative; 
-        float: none; 
+        float: none;
         margin-bottom: 10px; 
     }
 
