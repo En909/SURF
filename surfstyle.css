@@ -45,7 +45,7 @@ body {
 #menu {
     position: fixed;
     z-index: 1;
-    width: 15%;
+    width: 12.5%;
     height: 60%;
     background-color: #b0c4de;
     box-shadow: inset 0 0 5px 2px #000000;
@@ -57,6 +57,10 @@ body {
 #menu li {
     list-style-type: none;
     padding: 10px 10px 0px 10px;
+}
+
+#menu ul {
+    padding: 0px 0px 10px 0px;
 }
 
 #menu a {
@@ -81,8 +85,9 @@ body {
 #header {
     z-index: 2;
     font: 1em Riffic;
+    left: -2.5%;
     position: relative;
-    width: 100%;
+    width: 105%;
     height: auto;
     line-height: 100px;
     text-align: left;
@@ -163,9 +168,11 @@ body {
 
 @media (max-width: 1200px) {
     #menu {
-        width: 20%;
-        height: auto;
-        margin-bottom: 10px;
+        width: 85%; /* Полная ширина для мобильных устройств */
+        height: auto; 
+        position: relative; 
+        float: none;
+        margin-bottom: 10px; 
     }
 
     #inner, #wrapper {
@@ -177,7 +184,7 @@ body {
 
 @media (max-width: 992px) {
     #menu {
-        width: 100%; /* Полная ширина для мобильных устройств */
+        width: 85%; /* Полная ширина для мобильных устройств */
         height: auto; 
         position: relative; 
         float: none;
@@ -185,7 +192,7 @@ body {
     }
 
     #inner, #wrapper {
-        width: 95%; 
+        width: 80%; 
         float: none; 
         margin-top: 10px; 
     }
@@ -193,7 +200,7 @@ body {
 
 @media (max-width: 768px) {
     #menu {
-        width: 100%; /* Полная ширина для мобильных устройств */
+        width: 85%; /* Полная ширина для мобильных устройств */
         height: auto; 
         position: relative; 
         float: none;
@@ -209,7 +216,7 @@ body {
 
 @media (max-width: 576px) {
     #menu {
-        width: 100%; /* Полная ширина для мобильных устройств */
+        width: 80%; /* Полная ширина для мобильных устройств */
         height: auto; 
         position: relative; 
         float: none;
