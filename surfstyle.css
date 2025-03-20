@@ -70,7 +70,7 @@ body {
     border-radius: 5px;
     text-align: center;
     text-decoration: none;
-    padding: 10px;
+    padding: 1%;
     background-color: #e8ecf3;
     box-shadow: inset -5px -5px 2px #000000;
 }
@@ -182,39 +182,7 @@ body {
     }
 }
 
-@media (max-width: 992px) {
-    #menu {
-        width: 85%; /* Полная ширина для мобильных устройств */
-        height: auto; 
-        position: relative; 
-        float: none;
-        margin-bottom: 10px; 
-    }
-
-    #inner, #wrapper {
-        width: 80%; 
-        float: none; 
-        margin-top: 10px; 
-    }
-}
-
 @media (max-width: 768px) {
-    #menu {
-        width: 85%; /* Полная ширина для мобильных устройств */
-        height: auto; 
-        position: relative; 
-        float: none;
-        margin-bottom: 10px; 
-    }
-
-    #inner, #wrapper {
-        width: 95%; 
-        float: none; 
-        margin-top: 10px; 
-    }
-}
-
-@media (max-width: 576px) {
     #menu {
         width: 80%; /* Полная ширина для мобильных устройств */
         height: auto; 
@@ -224,7 +192,6 @@ body {
     }
 
     #inner, #wrapper {
-        width: 100%; 
         float: none; 
         margin-top: 10px; 
     }

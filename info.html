@@ -4,30 +4,134 @@
     <link href="info.css" rel="stylesheet">
     <link rel="icon" href="img/fav.ico">
     <meta charset="UTF-8">
-    <title>Surf info</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surf</title>
     <style>
-        #main {
-          display: none;
+        /* Добавляем стили для лупы */
+        .magnifier {
+            position: absolute;
+            border: 2px solid #000;
+            border-radius: 50%;
+            cursor: none;
+            width: 100px; /* Размер лупы */
+            height: 100px; /* Размер лупы */
+            overflow: hidden;
+            display: none; /* Скрываем лупу по умолчанию */
+            pointer-events: none;
         }
-        #okno {
-          width: 1000px;
-          height: 600px;
-          text-align: center;
-          color: #014710;
-          background-image: url(img/chat.png);
+
+        .magnifier img {
+            position: absolute;
+            width: 1000%; /* Увеличиваем изображение */
+            height: auto;
+            top: 0; /* Убираем смещение */
+            left: 0; /* Убираем смещение */
+            pointer-events: none;
         }
-        #main:target {display: block;}
-      </style>
+    </style>
 </head>
 <body>
-    <div id = "wrapper">
-        <div id="inner">
-            <p style="position: relative; left: 160px; top:100px;"><a href="#main"><img src="img/host.png"></a></p>
+    <div class="monitor">
+        <div class="screen">
+            <div class="icon" onclick="openWindow('win1')"><img src="img/host.png" width="50" height="50" /></div>
+            <div class="icon" onclick="openWindow('win2')">📜</div>
         </div>
-        <a href="#" id="main" style="position:fixed; top: 150px; left: 245px;">
-            <div id="okno">
+        <div id="win1" class="window" onmousedown="startDrag(event, 'win1')">
+            <div class="window-header">
+                Папка
+                <div class="close" onclick="closeWindow('win1')">X</div>
             </div>
-        </a>
+            <div class="window-content">
+                <img src="img/test.jpg" class="inn" id="image" style="cursor: pointer;" />
+            </div>
+        </div>
+        <div id="win2" class="window" onmousedown="startDrag(event, 'win2')">
+            <div class="window-header">
+                Документ
+                <div class="close" onclick="closeWindow('win2')">X</div>
+            </div>
+            <div class="window-content">
+                <p>Это документ</p>
+            </div>
+        </div>
+
+        <!-- Лупа -->
+        <div class="magnifier" id="magnifier">
+            <img src="img/test.jpg" alt="Увеличенное изображение">
+        </div>
     </div>
+
+    <script>
+        function openWindow(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+
+        function closeWindow(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function startDrag(event, id) {
+            let element = document.getElementById(id);
+            element.style.zIndex = 1;
+
+            // Получаем текущие координаты окна
+            let rect = element.getBoundingClientRect();
+
+            // Вычисляем смещение курсора относительно верхнего левого угла окна
+            let offsetX = event.clientX - rect.left;
+            let offsetY = event.clientY - rect.top;
+
+            function moveAt(pageX, pageY) {
+                element.style.left = pageX - offsetX + 'px';
+                element.style.top = pageY - offsetY + 'px';
+            }
+
+            function onMouseMove(event) {
+                moveAt(event.pageX, event.pageY);
+            }
+
+            document.addEventListener('mousemove', onMouseMove);
+
+            document.onmouseup = function () {
+                document.removeEventListener('mousemove', onMouseMove);
+                document.onmouseup = null;
+                element.style.zIndex = 0;
+            };
+
+            event.preventDefault();
+        }
+        // Логика для лупы
+        const image = document.getElementById('image');
+        const magnifier = document.getElementById('magnifier');
+
+        image.addEventListener('mousemove', function (e) {
+            magnifier.style.display = 'block'; // Показываем лупу
+            const rect = image.getBoundingClientRect();
+
+            // Позиция курсора относительно изображения
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            // Позиционируем лупу
+            magnifier.style.left = (e.pageX - 50) + 'px'; // Центрируем лупу
+            magnifier.style.top = (e.pageY - 50) + 'px'; // Центрируем лупу
+
+            // Устанавливаем смещение для увеличенного изображения
+            magnifier.querySelector('img').style.transform = 'translate(' + (-x *2) + 'px, ' + (-y * 2) + 'px)'; // Увеличиваем в 2 раза
+        });
+
+        // Скрытие лупы при выходе курсора за пределы изображения
+        image.addEventListener('mouseleave', function () {
+            magnifier.style.display = 'none'; // Скрываем лупу
+        });
+
+        // Скрытие лупы при клике вне изображения
+        document.addEventListener('click', function (e) {
+            if (!image.contains(e.target) && !magnifier.contains(e.target)) {
+                magnifier.style.display = 'none'; // Скрываем лупу
+            }
+        });
+    </script>
+
 </body>
 </html>
